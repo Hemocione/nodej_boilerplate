@@ -41,7 +41,6 @@ import { config } from 'dotenv'
 import { getEnv } from './environments'
 config()
 
-
 /**
  * moment configuration
  * @memberof config
@@ -61,7 +60,7 @@ const appConfig = {
   isProduction: getEnv('NODE_ENV') === envProdName,
   envName: getEnv('NODE_ENV'),
   todo: {
-    tableName: getEnv('MARIA_DB_TODO_TABLE_NAME', 'todos'),
+    tableName: getEnv('MARIA_DB_TODO_TABLE_NAME', 'todos')
   }
 }
 

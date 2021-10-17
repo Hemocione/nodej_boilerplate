@@ -39,7 +39,7 @@ import { Adapter } from '../../../adapters/index'
  */
 import { Router } from 'express'
 import { response } from './utils'
-import { getTodo } from '../controllers/todo.controller'
+import { getTodo, deleteTodo, createTodo, updateTodo } from '../controllers/todo.controller'
 
 const router = Router()
 
@@ -58,6 +58,21 @@ export const todoRouter = (escriba, adapter) => {
    * get task with existing id
    */
   router.get('/:id', (req, res, next) => response(getTodo(escriba, adapter)(req, res, next), res, next))
+
+  /**
+   * create task
+   */
+  router.post('/', (req, res, next) => response(createTodo(escriba, adapter)(req, res, next), res, next))
+
+  /**
+   * update task with existing id
+   */
+  router.put('/:id', (req, res, next) => response(updateTodo(escriba, adapter)(req, res, next), res, next))
+
+  /**
+   * delete task with existing id
+   */
+  router.delete('/:id', (req, res, next) => response(deleteTodo(escriba, adapter)(req, res, next), res, next))
 
   return router
 }
